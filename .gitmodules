@@ -1,3 +1,15 @@
 [submodule "submodules/jz"]
 	path = submodules/jz
 	url = https://github.com/beryllium-org/jz
+[submodule "submodules/Adafruit_CircuitPython_Requests"]
+	path = submodules/Adafruit_CircuitPython_Requests
+	url = https://github.com/adafruit/Adafruit_CircuitPython_Requests
+[submodule "submodules/Adafruit_CircuitPython_NTP"]
+	path = submodules/Adafruit_CircuitPython_NTP
+	url = https://github.com/adafruit/Adafruit_CircuitPython_NTP
+[submodule "submodules/CircuitMPY"]
+	path = submodules/CircuitMPY
+	url = https://github.com/beryllium-org/CircuitMPY
+[submodule "submodules/Adafruit_CircuitPython_ConnectionManager"]
+	path = submodules/Adafruit_CircuitPython_ConnectionManager
+	url = https://github.com/adafruit/Adafruit_CircuitPython_ConnectionManager
