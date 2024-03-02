@@ -1,6 +1,31 @@
-print("""
-    This script is run during the jpkgstrapping of the package from a linux host.
-    
-    You should copy the files you want in the system from here.
-    You should NOT bother with the manifest or the uninstall files from here.
-""")
+for i in [
+    "adafruit_connection_manager.mpy",
+    "adafruit_ntp.mpy",
+    "adafruit_requests.mpy",
+    "telnet_console.mpy",
+]:
+    shutil.copy(i, path.join(root, "lib", i))
+
+try:
+    mkdir(path.join(root, "bin/iwctl"))
+except FileExistsError:
+    pass
+
+for i in [
+    "headless.py",
+    "interactive.py",
+    "main.py",
+]:
+    shutil.copy(i, path.join(root, "bin/iwctl", i))
+
+for i in [
+    "ping.lja",
+    "ping.py",
+    "iwctl.lja",
+    "telnet.lja",
+    "telnet.py",
+    "timesync.lja",
+    "timesync.py",
+]:
+    shutil.copy(i, path.join(root, "bin", i))
+
