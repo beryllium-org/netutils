@@ -150,11 +150,11 @@ while True:
                                 ):
                                     # Store this network
                                     try:
-                                        storage.remount("/", False)
+                                        remount("/", False)
                                         cptoml.put(
                                             vr("data")[3], vr("passwd"), subtable="IWD"
                                         )
-                                        storage.remount("/", True)
+                                        remount("/", True)
                                         term.write(
                                             "\nConnection stored in `&/settings.toml`."
                                         )
