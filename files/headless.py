@@ -67,7 +67,13 @@ if vr("argl") > 2 and vr("args")[0] == "station" and vr("args")[1] == vr("device
                 )
             ) and vr("passwd") is not None:
                 # Store this network
-                cptoml.put(vr("args")[3], vr("passwd"), subtable="IWD")
+                try:
+                    storage.remount("/", False)
+                    cptoml.put(vr("args")[3], vr("passwd"), subtable="IWD")
+                    storage.remount("/", True)
+                    dmtex("IWD: Network stored in settings.toml")
+                except RuntimeError:
+                    be.based.error(7)
             be.api.setvar("return", str(int(not vr("res"))))
         else:
             term.write("Network not found")

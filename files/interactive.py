@@ -149,12 +149,17 @@ while True:
                                     )
                                 ):
                                     # Store this network
-                                    cptoml.put(
-                                        vr("data")[3], vr("passwd"), subtable="IWD"
-                                    )
-                                    term.write(
-                                        "\nConnection stored in `&/settings.toml`."
-                                    )
+                                    try:
+                                        storage.remount("/", False)
+                                        cptoml.put(
+                                            vr("data")[3], vr("passwd"), subtable="IWD"
+                                        )
+                                        storage.remount("/", True)
+                                        term.write(
+                                            "\nConnection stored in `&/settings.toml`."
+                                        )
+                                    except RuntimeError:
+                                        be.based.error(7)
                         else:
                             dmtex('IWD: Connecting to: "{}"'.format(vr("data")[3]))
                             vr(
