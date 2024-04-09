@@ -23,29 +23,29 @@ except NameError:
     pass
 
 vr(
-    "wifi_best",
+    "wifi_conn",
     """vr(
     "res",
     be.devices["network"][0].connect(
-        vr("best"), cptoml.fetch(vr("best"), subtable="IWD")
+        vr("network"), cptoml.fetch(vr("network"), subtable="IWD")
     ),
 )
 if vr("res"):
     dmtex(
         "IWD: Connected to network {} successfully.".format(
-            vr("best")
+            vr("network")
         )
     )
 else:
     dmtex(
         "IWD: Connection to network {} failed.".format(
-            vr("best")
+            vr("network")
         )
     )
 """,
 )
 try:
-    vr("wifi_best", compile(vr("wifi_best"), "driver_wifi", "exec"))
+    vr("wifi_conn", compile(vr("wifi_conn"), "driver_wifi", "exec"))
 except NameError:
     pass
 

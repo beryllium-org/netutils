@@ -92,54 +92,25 @@ if vr("argl") > 2 and vr("args")[0] == "station" and vr("args")[1] == vr("device
         if not be.devices["network"][0].connected:
             # We don't need to run on an already connected interface
             vr("stored_networks", cptoml.keys("IWD"))
-            if len(vr("stored_networks")):
+            vr("res", False)
+            if vr("stored_networks"):
                 vr("scanned_networks", be.devices["network"][0].scan())
-                vr("best", None)  # The best network to connect to
-                vr("best_alt", None)  # An alternative, just in case.
-                vr("best_index", None)  # Rating
-                vr("best_alt_index", None)  # Rating for alt
-                for pv[get_pid()]["i"] in vr("scanned_networks"):
-                    if vr("i") in vr("stored_networks"):
-                        if vr("best") is None:  # We have no alternative
-                            vr("best", vr("i"))
-                            vr("best_index", vr("stored_networks").index(vr("i")))
-                        else:  # We already have a network we can use
-                            vr(
-                                "cind", vr("stored_networks").index(vr("i"))
-                            )  # To test if it's better
-                            if vr("best_index") > vr("cind"):
-                                # It's a better network
-                                vr("best_alt", vr("best"))
-                                vr("best_alt_index", vr("best_index"))
-                                vr("best", vr("i"))
-                                vr("best_index", vr("cind"))
-                            elif vr("best_alt") is None or vr("best_alt_index") > vr(
-                                "cind"
-                            ):
-                                vr("best_alt", vr("i"))
-                                vr("best_alt_index", vr("cind"))
-                if vr("best") is not None:  # We can connect
-                    exec(vr("wifi_best"))
-                    if not vr("res"):
-                        if vr("best_alt") is not None:
-                            vr("best", vr("best_alt"))
-                            exec(vr("wifi_best"))
-                        else:
-                            dmtex(f"IWD: No available alternative networks. ABORT.")
-                            vr("best", None)
-                if (
-                    vr("best") is None
-                ):  # We have to create a hotspot based on toml settings.
-                    vr("apssid", cptoml.fetch("SSID", subtable="IWD-AP"))
-                    vr("appasswd", cptoml.fetch("PASSWD", subtable="IWD-AP"))
-                    if vr("apssid") is not None:
-                        vr(
-                            "res",
-                            be.devices["network"][0].connect_ap(
-                                vr("apssid"), vr("appasswd")
-                            ),
-                        )
-                        exec(vr("wifi_ap_msg"))
+                for pv[get_pid()]["network"] in vr("stored_networks"):
+                    if vr("network") in vr("scanned_networks"):
+                        exec(vr("wifi_conn"))
+                        if vr("res"):
+                            break
+            if not vr("res"):  # We have to create a hotspot based on toml settings.
+                vr("apssid", cptoml.fetch("SSID", subtable="IWD-AP"))
+                vr("appasswd", cptoml.fetch("PASSWD", subtable="IWD-AP"))
+                if vr("apssid") is not None:
+                    vr(
+                        "res",
+                        be.devices["network"][0].connect_ap(
+                            vr("apssid"), vr("appasswd")
+                        ),
+                    )
+                    exec(vr("wifi_ap_msg"))
     elif vr("args")[2] == "disconnect":
         be.devices["network"][0].disconnect()
         be.devices["network"][0].disconnect_ap()
