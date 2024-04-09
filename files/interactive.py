@@ -140,7 +140,7 @@ while True:
                                     ),
                                 )
                                 if (
-                                    (vr("res"))
+                                    vr("res")
                                     and vr("passwd") is not None
                                     and (
                                         vr("data")[3] not in cptoml.keys("IWD")

@@ -6,7 +6,7 @@ vr("pr", False)
 
 vr(
     "wifi_connect_msg",
-    """if not vr("res"):
+    """if vr("res"):
     dmtex("IWD: Connected to network successfully.")
     if vr("pr"):
         term.write("\\nConnected successfully.")
