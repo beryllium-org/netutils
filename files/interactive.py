@@ -119,7 +119,7 @@ while True:
                                 try:
                                     vr(
                                         "passwd",
-                                        input(
+                                        term.input(
                                             "\nEnter password for {}: ".format(
                                                 vr("data")[3]
                                             )
@@ -175,7 +175,7 @@ while True:
                         try:
                             vr(
                                 "passwd",
-                                input(
+                                term.input(
                                     "\nEnter password for AP {}, or press CTRL+C: ".format(
                                         vr("data")[3]
                                     )
