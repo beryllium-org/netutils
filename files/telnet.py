@@ -1,9 +1,8 @@
 rename_process("telnet")
 vr("opts", be.api.xarg())
-vr("li", vr("opts")["w"] + vr("opts")["hw"])
-if "help" in vr("opts")["o"] or "h" in vr("opts")["o"] or not len(vr("li")):
+if "help" in vr("opts")["o"] or "h" in vr("opts")["o"] or not vr("opts")["aw"]:
     term.write("USAGE: telnet [setup/deinit]")
-elif len(vr("li")) and vr("li")[0] == "setup":
+elif vr("opts")["aw"] and vr("opts")["aw"][0] == "setup":
     systemprints(2, "Setup telnet")
     if "network" in be.devices and (
         be.devices["network"][0].connected or be.devices["network"][0].ap_connected
@@ -32,7 +31,7 @@ elif len(vr("li")) and vr("li")[0] == "setup":
             systemprints(5, "Setup telnet")
     else:
         be.based.error(5)
-elif len(vr("li")) and vr("li", pid=0) == "deinit":
+elif vr("opts")["aw"] and vr("opts")["aw"][0] == "deinit":
     if "ttyTELNET0" in pv[0]["consoles"]:
         pv[0]["consoles"]["ttyTELNET0"].deinit()
         pv[0]["consoles"].pop("ttyTELNET0")
