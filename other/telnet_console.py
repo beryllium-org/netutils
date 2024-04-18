@@ -237,3 +237,5 @@ class telnet_console:  # The actual class you need to use
             self._tx_buf,
         )
         del self._rx_buf, self._ps_buf, self._maxbuf, self
+        from time import sleep
+        sleep(1.4)
