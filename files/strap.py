@@ -4,7 +4,7 @@ for i in [
     "adafruit_requests.mpy",
     "telnet_console.mpy",
 ]:
-    shutil.copy(i, path.join(root, "lib", i))
+    shutil.copyfile(i, path.join(root, "lib", i))
 
 try:
     mkdir(path.join(root, "bin/iwctl"))
@@ -16,7 +16,7 @@ for i in [
     "interactive.py",
     "main.py",
 ]:
-    shutil.copy(i, path.join(root, "bin/iwctl", i))
+    shutil.copyfile(i, path.join(root, "bin/iwctl", i))
 
 for i in [
     "ping.lja",
@@ -27,5 +27,5 @@ for i in [
     "timesync.lja",
     "timesync.py",
 ]:
-    shutil.copy(i, path.join(root, "bin", i))
+    shutil.copyfile(i, path.join(root, "bin", i))
 
