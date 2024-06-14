@@ -22,6 +22,8 @@ for pv[get_pid()]["f"] in [
     "telnet.py",
     "timesync.lja",
     "timesync.py",
+    "load_networking.lja",
+    "load_wifi.py",
 ]:
     be.based.run("cp " + vr("f") + " /bin/" + vr("f"))
 

@@ -26,6 +26,7 @@ for i in [
     "telnet.py",
     "timesync.lja",
     "timesync.py",
+    "load_networking.lja",
+    "load_wifi.py",
 ]:
     shutil.copyfile(i, path.join(root, "bin", i))
-
