@@ -1,5 +1,5 @@
 pexec term.dmtex_suppress = False
 fpexec /bin/load_wifi.py
-telnet setup -q
 timesync
+telnet setup -q
 pexec term.dmtex_suppress = True
