@@ -13,6 +13,10 @@ term.trigger_dict = {
 term.buf[1] = ""
 vr("networks", {})
 
+if "network" not in be.devices.keys():
+    term.write("Warning, no network devices loaded.")
+    term.write("Consider running `load_networking`")
+
 # main loop
 while True:
     term.clear_line()
