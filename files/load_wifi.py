@@ -4,7 +4,7 @@ if "network" not in be.devices.keys():
     be.based.run("iwctl station wifi disconnect")
 
     def _autocon() -> None:
-        if not (
+        if be.devices["network"][0].enabled and not (
             be.devices["network"][0].connected or be.devices["network"][0].ap_connected
         ):
             systemprints(2, "Connecting wifi")
