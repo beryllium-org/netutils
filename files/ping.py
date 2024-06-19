@@ -28,7 +28,7 @@ if "network" in be.devices and be.devices["network"][0].connected:
                         be.io.ledset(3)
                         vrp("done")
                         vr("a", be.devices["network"][0].ping(vr("domain")))
-                        if vr("a") is not None:
+                        if vr("a") is not None and vr("a") != -1:
                             vra("timetab", float(vr("a")))
                             vrp("good")
                             term.write(
