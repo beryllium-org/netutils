@@ -15,7 +15,11 @@ elif vr("opts")["aw"] and vr("opts")["aw"][0] == "setup":
                     be.devices["network"][0]._pool.AF_INET,
                     be.devices["network"][0]._pool.SOCK_STREAM,
                 ),
-                str(be.devices["network"][0].get_ipconf()["ip"]),
+                str(
+                    be.devices["network"][0].get_ipconf()["ip"]
+                    if be.devices["network"][0].get_ipconf()["ip"] is not None
+                    else be.devices["network"][0].get_ipconf()["ip_ap"]
+                ),
             )
             if "q" not in vr("opts")["o"]:
                 term.write(
