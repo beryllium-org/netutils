@@ -24,7 +24,11 @@ for pv[get_pid()]["f"] in [
     "timesync.py",
     "load_networking.lja",
     "load_wifi.py",
+    "rfkill.lja",
+    "rfkill.py",
 ]:
     be.based.run("cp " + vr("f") + " /bin/" + vr("f"))
+
+be.based.run("cp rfkill.man /usr/share/man/rfkill.man")
 
 be.api.setvar("return", "0")

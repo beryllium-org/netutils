@@ -28,5 +28,9 @@ for i in [
     "timesync.py",
     "load_networking.lja",
     "load_wifi.py",
+    "rfkill.lja",
+    "rfkill.py",
 ]:
     shutil.copyfile(i, path.join(root, "bin", i))
+
+shutil.copyfile("rfkill.man", path.join(root, "usr/share/man", "rfkill.man"))
