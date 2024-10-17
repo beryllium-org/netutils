@@ -57,7 +57,7 @@ while True:
                 if vr("device_n") is not None:
                     vr("info", be.devices["network"][0].get_ipconf())
                     term.write(
-                        device_n
+                        vr("device_n")
                         + " " * 5
                         + info["mac_pretty"]
                         + " " * 3
