@@ -1,5 +1,6 @@
 rename_process("rfkill")
 vr("opts", be.api.xarg())
+be.api.setvar("return", "1")
 if (
     "help" in vr("opts")["o"]
     or "h" in vr("opts")["o"]
@@ -33,6 +34,7 @@ elif vr("opts")["aw"]:
                     remount("/", False)
                     cptoml.put(vr("d"), False, subtable="RFKILL")
                     remount("/", True)
+                    be.api.setvar("return", "0")
                 except RuntimeError:
                     term.write("Could not commit rfkill state to storage!")
             else:
@@ -51,6 +53,7 @@ elif vr("opts")["aw"]:
                     remount("/", False)
                     cptoml.put(vr("d"), True, subtable="RFKILL")
                     remount("/", True)
+                    be.api.setvar("return", "0")
                 except RuntimeError:
                     term.write("Could not commit rfkill state to storage!")
             else:
@@ -73,6 +76,7 @@ elif vr("opts")["aw"]:
                     remount("/", False)
                     cptoml.put(vr("d"), not vr("s"), subtable="RFKILL")
                     remount("/", True)
+                    be.api.setvar("return", "0")
                 except RuntimeError:
                     term.write("Could not commit rfkill state to storage!")
             else:
