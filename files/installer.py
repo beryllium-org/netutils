@@ -26,6 +26,8 @@ for pv[get_pid()]["f"] in [
     "load_wifi.py",
     "rfkill.lja",
     "rfkill.py",
+    "ip.lja",
+    "ip.py",
 ]:
     be.based.run("cp " + vr("f") + " /bin/" + vr("f"))
 

@@ -30,6 +30,8 @@ for i in [
     "load_wifi.py",
     "rfkill.lja",
     "rfkill.py",
+    "ip.lja",
+    "ip.py",
 ]:
     shutil.copyfile(i, path.join(root, "bin", i))
 
