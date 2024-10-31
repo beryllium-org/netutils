@@ -8,8 +8,13 @@ if "network" not in be.devices.keys():
         dmtex("Wi-Fi disabled by RFKILL")
 
     def _autocon() -> None:
-        if be.devices["network"][0].enabled and not (
-            be.devices["network"][0].connected or be.devices["network"][0].ap_connected
+        if (
+            be.devices["network"][0].enabled
+            and "ESPNow" not in be.devices.keys()
+            and not (
+                be.devices["network"][0].connected
+                or be.devices["network"][0].ap_connected
+            )
         ):
             systemprints(2, "Connecting Wi-Fi")
             be.based.run(
